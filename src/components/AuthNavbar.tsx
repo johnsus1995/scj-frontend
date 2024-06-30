@@ -11,7 +11,7 @@ const AuthNavbar = () => {
         <Link href="#" className="py-2 bg-inherit">
           About
         </Link>
-        <Link href="#" className="py-2  bg-inherit">
+        <Link href="exams" className="py-2  bg-inherit">
           JSS
         </Link>
         <Link

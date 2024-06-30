@@ -12,6 +12,14 @@ const nextConfig = {
     // FACEBOOK_CLIENT_SECRET: process.env.FACEBOOK_CLIENT_SECRET,
     // AUTH_SECRET: process.env.AUTH_SECRET,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

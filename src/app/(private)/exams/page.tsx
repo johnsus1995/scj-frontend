@@ -32,7 +32,7 @@ export const Exam = (props) => {
         </p>
       </div>
       <div className="bg-white  rounded-lg w-full ">
-        <p className="text-base font-semibold p-2 px-3">Exam title</p>
+        <p className="text-base font-semibold p-2 px-3">SCJ Year 41 (12th Round) “Being Sealed” Verification Exam</p>
         <p className="text-gray-500 text-sm px-3">
           It was popularized in the 1960s
         </p>

@@ -1,8 +1,8 @@
 import { useCurrentEditor } from "@tiptap/react";
 import { cn } from "../../lib/utils";
 
-export const MenuBar = () => {
-  const { editor } = useCurrentEditor();
+export const MenuBar = ({editor}) => {
+  // const { editor } = useCurrentEditor();
 
   if (!editor) {
     return null;

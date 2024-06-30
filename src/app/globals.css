@@ -6,6 +6,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  background-color: #F0EEE6;
 }
 
 

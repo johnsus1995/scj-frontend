@@ -32,7 +32,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/editor/page.jsx", "src/components/Navbar.jsx"  ],
+, "src/app/editor/page.jsx", "src/components/Navbar.jsx", "src/app/layout.js"  ],
   "exclude": [
     "node_modules"
   ]

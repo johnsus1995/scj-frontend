@@ -17,7 +17,7 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
     const [isVisible, setIsVisible] = useState(false);
     return (
       <div className='flex flex-col gap-2 w-full bg-inherit'>
-        <label className='font-normal text-sm text-black bg-inherit'>
+        <label className='font-medium text-sm text-black bg-inherit'>
           {label}
           {requiredField && <span className='text-red-600 text-xs bg-inherit'>*</span>}
         </label>
@@ -44,12 +44,12 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
         >
           {isVisible ? (
             <Eye
-              className='absolute right-[8px] bottom-[18px]  h-5 w-5 text-muted-foreground'
+              className='absolute right-[8px] bottom-[18px]  h-5 w-5 '
               aria-hidden='true'
             />
           ) : (
             <EyeOff
-              className='absolute  right-[8px] bottom-[18px] h-5 w-5 text-muted-foreground'
+              className='absolute  right-[8px] bottom-[18px] h-5 w-5 '
               aria-hidden='true'
             />
           )}

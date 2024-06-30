@@ -6,7 +6,12 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  background-color: #f0eee6;
+}
+
+body{
+  background: #f0eee6;
+  color: black;
+
 }
 
 /* Basic editor styles */

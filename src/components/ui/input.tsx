@@ -14,7 +14,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-2 bg-inherit">
         {label && (
-          <label className='font-normal text-sm text-black bg-inherit'>
+          <label className='font-medium text-sm text-black bg-inherit'>
             {label}
             {requiredField && <span className='text-red-600 bg-inherit'>*</span>}
           </label>

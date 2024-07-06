@@ -19,7 +19,7 @@ const PrivateNavbar = (props) => {
           {/* <Link href="#" className=" ">
           About
         </Link> */}
-          <Link href="exams" className="  ">
+          <Link href="/editor" className="  ">
             Exams
           </Link>
           <Link href="/sign-up" className=" ">

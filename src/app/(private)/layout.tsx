@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 const PrivateLayout = ({ children }) => {
+  
   return (
     <div className="flex flex-col">
       <PrivateNavbar className="sticky top-0 w-full" />

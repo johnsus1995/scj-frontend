@@ -1,15 +1,16 @@
-import { useCurrentEditor } from "@tiptap/react";
+
+
+
 import { cn } from "../../lib/utils";
 
 export const MenuBar = ({editor}) => {
-  // const { editor } = useCurrentEditor();
 
   if (!editor) {
     return null;
   }
 
   return (
-    <div className="text-sm flex gap-2 py-4 px-4 rounded-t-[30px] border-t border-l border-r border-t-gray-200 ">
+    <div className="text-sm flex gap-2 py-4 rounded-t-[30px] border-t border-l border-r border-t-gray-200">
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}

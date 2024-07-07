@@ -1,24 +1,30 @@
-import React from "react";
+"use client";
 
-import TiptapEditor from "../../components/TiptapEditor";
+import MenuBar from "@/components/tiptap/menubar";
+import CharacterCount from "@tiptap/extension-character-count";
+import Highlight from "@tiptap/extension-highlight";
+import TaskItem from "@tiptap/extension-task-item";
+import TaskList from "@tiptap/extension-task-list";
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
 
-const EditorPage = () => {
+export default function Editor() {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure(),
+      Highlight,
+      TaskList,
+      TaskItem,
+      CharacterCount.configure({
+        limit: 10000,
+      }),
+    ],
+  });
+
   return (
-    <div className="p-4">
-      <h1 className="font-bold text-lg">Question. 1</h1>
-      <TiptapEditor />
-      {/* <h1 className="font-bold text-lg">Answer. 1</h1> */}
-      {/* <TiptapEditor /> */}
-      <div className="flex gap-3 mt-2 w-fit ml-auto">
-        <button className="bg-[#3D4BB0] py-1 px-4 rounded-lg text-white">
-          Previous
-        </button>
-        <button className="bg-[#3D4BB0] py-1 px-4 rounded-lg text-white">
-          Next
-        </button>
-      </div>
+    <div className="editor">
+      {editor && <MenuBar editor={editor} />}
+      <EditorContent className="editor__content my-4 md:my-6" editor={editor} />
     </div>
   );
-};
-
-export default EditorPage;
+}

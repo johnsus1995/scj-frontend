@@ -13,6 +13,7 @@ const nextConfig = {
     // AUTH_SECRET: process.env.AUTH_SECRET,
   },
   images: {
+    formats: ["image/webp"],
     remotePatterns: [
       {
         protocol: "https",

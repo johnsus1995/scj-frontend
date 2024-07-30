@@ -1,9 +1,11 @@
+import { Fragment } from "react";
+
 import type { Editor } from "@tiptap/react";
 import {
   Bold,
   Italic,
   Strikethrough,
-  CodeXml,
+  Code,
   Highlighter,
   List,
   ListOrdered,
@@ -13,7 +15,6 @@ import {
   Redo2,
 } from "lucide-react";
 
-import { Fragment } from "react";
 
 import MenuItem from "./menuItem";
 
@@ -38,7 +39,7 @@ export default function MenuBar({ editor }: { editor: Editor }) {
       isActive: () => editor.isActive("strike"),
     },
     {
-      icon: CodeXml,
+      icon: Code,
       title: "Code",
       action: () => editor.chain().focus().toggleCode().run(),
       isActive: () => editor.isActive("code"),
@@ -137,7 +138,7 @@ export default function MenuBar({ editor }: { editor: Editor }) {
   ];
 
   return (
-    <div className="editor__header flex flex-wrap mt-4 md:mt-6">
+    <div className="editor__header ">
       {items.map((item, index) => (
         <Fragment key={index}>
           {item.type === "divider" ? (

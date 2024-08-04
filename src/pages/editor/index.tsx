@@ -64,10 +64,38 @@ export default function Editor() {
   };
 
   return (
-    <div className="editor">
-      {editor && <MenuBar editor={editor} />}
-      <EditorContent className="editor__content" editor={editor} />
-      <button onClick={onClick}>log editor</button>
-    </div>
+    <>
+      <div>
+        <h1 className="text-lg font-bold pb-2 ">Question-1</h1>
+      </div>
+      <div className="editor">
+        {editor && <MenuBar editor={editor} />}
+        <hr />
+        <EditorContent className="editor__content" editor={editor} />
+        <button onClick={onClick}>log editor</button>
+      </div>
+      <div>
+        <h1 className="text-lg font-bold pb-2 text-gray-500">
+          Answer keywords
+        </h1>
+        <div className='flex flex-col gap-2 flex-wrap'>
+          <input
+            type="text"
+            className="border border-gray-400 p-2 rounded-lg"
+            placeholder="keyword-1"
+          />
+          <input
+            type="text"
+            className="border border-gray-400 p-2 rounded-lg"
+            placeholder="keyword-2"
+          />
+          <input
+            type="text"
+            className="border border-gray-400 p-2 rounded-lg"
+            placeholder="keyword-3"
+          />
+        </div>
+      </div>
+    </>
   );
 }

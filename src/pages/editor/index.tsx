@@ -72,13 +72,14 @@ export default function Editor() {
         {editor && <MenuBar editor={editor} />}
         <hr />
         <EditorContent className="editor__content" editor={editor} />
-        <button onClick={onClick}>log editor</button>
       </div>
+      <button onClick={onClick} className='bg-gray-300 p-2 my-2 w-52 rounded-lg'>Submit</button>
+
       <div>
         <h1 className="text-lg font-bold pb-2 text-gray-500">
           Answer keywords
         </h1>
-        <div className='flex flex-col gap-2 flex-wrap'>
+        <div className="flex flex-col gap-2 flex-wrap">
           <input
             type="text"
             className="border border-gray-400 p-2 rounded-lg"

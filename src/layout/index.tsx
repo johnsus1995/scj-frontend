@@ -10,7 +10,7 @@ const LayoutComponent = () => {
   return (
     <div className="w-full h-full">
       <HeaderComponent />
-      <div className="px-4 py-20 flex flex-col">
+      <div className="p-2 md:px-4 md:pt-6 flex flex-col m-auto max-w-[1128px] h-full">
         <ErrorBoundary fallbackRender={fallbackRender}>
           <Suspense
             fallback={

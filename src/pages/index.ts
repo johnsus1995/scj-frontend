@@ -5,5 +5,6 @@ const Users = lazy(() => import('@/pages/users'));
 const Todos = lazy(() => import('@/pages/todos'));
 const Register = lazy(() => import('@/pages/auth/register'));
 const Editor = lazy(() => import('@/pages/editor'));
+const AllExams = lazy(() => import('@/pages/allExams'));
 
-export { Home, Users, Todos, Register,Editor };
+export { Home, Users, Todos, Register, Editor, AllExams };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
 
 import CharacterCount from '@tiptap/extension-character-count';
@@ -43,6 +44,7 @@ export default function Editor() {
         .split(/\s+/)
         .reduce((best: any, studentWord: any) => {
           const similarity = partial_ratio(word, studentWord);
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
           return similarity > best ? similarity : best;
         }, 0);
       return bestMatch >= threshold;
@@ -58,7 +60,7 @@ export default function Editor() {
       const plainText: any = convert(html, {
         wordwrap: false,
       });
-      console.log(plainText);
+      // console.log(plainText);
       // console.log(evaluateAnswer(plainText, 'droupadi murmu', 70));
     }
   };
@@ -73,7 +75,12 @@ export default function Editor() {
         <hr />
         <EditorContent className="editor__content" editor={editor} />
       </div>
-      <button onClick={onClick} className='bg-gray-300 p-2 my-2 w-52 rounded-lg'>Submit</button>
+      <button
+        onClick={onClick}
+        className="bg-gray-300 p-2 my-2 w-52 rounded-lg"
+      >
+        Submit
+      </button>
 
       <div>
         <h1 className="text-lg font-bold pb-2 text-gray-500">

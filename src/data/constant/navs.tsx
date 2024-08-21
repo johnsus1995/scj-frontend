@@ -1,9 +1,19 @@
 import { cloneDeep } from 'lodash';
 import { Link } from 'react-router-dom';
 
-import { HOME_PATH, USER_PATH, REGISTER_PATH,EDITOR_PATH, EXAMS_PATH } from './path';
+import {
+  HOME_PATH,
+  USER_PATH,
+  REGISTER_PATH,
+  EDITOR_PATH,
+  EXAMS_PATH,
+  TAKE_EXAM_PATH,
+  CREATE_EXAM_PATH,
+} from './path';
 import { TypeNavs, TypeRoutes } from './type-navs';
-import { Home, Users,Register,Editor, AllExams } from '@/pages';
+import { Home, Users, Register, Editor, AllExams } from '@/pages';
+import CreateExam from '@/pages/create-exam';
+import TakeExam from '@/pages/takeExam';
 import { capitalizeFirstLetter } from '@/utils';
 
 const navs: TypeNavs[] = [
@@ -31,6 +41,16 @@ const navs: TypeNavs[] = [
     key: EDITOR_PATH,
     label: 'editor',
     element: <Editor />,
+  },
+  {
+    key: TAKE_EXAM_PATH,
+    label: 'take-exam',
+    element: <TakeExam />,
+  },
+  {
+    key: CREATE_EXAM_PATH,
+    label: 'create-exam',
+    element: <CreateExam />,
   },
 ];
 

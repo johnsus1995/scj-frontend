@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commint": "lint-staged"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
@@ -34,7 +34,7 @@
     "@emotion/babel-plugin": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@hookform/resolvers": "^3.3.1",
+    "@hookform/resolvers": "^3.9.0",
     "@lukemorales/query-key-factory": "^1.3.2",
     "@radix-ui/react-slot": "^1.1.0",
     "@tanstack/react-query": "^4.35.3",
@@ -59,7 +59,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.11",
-    "react-hook-form": "^7.47.0",
+    "react-hook-form": "^7.52.2",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0",

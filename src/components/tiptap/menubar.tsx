@@ -1,6 +1,6 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
-import type { Editor } from "@tiptap/react";
+import type { Editor } from '@tiptap/react';
 import {
   Bold,
   Italic,
@@ -13,45 +13,44 @@ import {
   Eraser,
   Undo2,
   Redo2,
-} from "lucide-react";
+} from 'lucide-react';
 
-
-import MenuItem from "./menuItem";
+import MenuItem from './menuItem';
 
 export default function MenuBar({ editor }: { editor: Editor }) {
   const items = [
     {
       icon: Bold,
-      title: "Bold",
+      title: 'Bold',
       action: () => editor.chain().focus().toggleBold().run(),
-      isActive: () => editor.isActive("bold"),
+      isActive: () => editor.isActive('bold'),
     },
     {
       icon: Italic,
-      title: "Italic",
+      title: 'Italic',
       action: () => editor.chain().focus().toggleItalic().run(),
-      isActive: () => editor.isActive("italic"),
+      isActive: () => editor.isActive('italic'),
     },
     {
       icon: Strikethrough,
-      title: "Strike",
+      title: 'Strike',
       action: () => editor.chain().focus().toggleStrike().run(),
-      isActive: () => editor.isActive("strike"),
+      isActive: () => editor.isActive('strike'),
     },
     {
       icon: Code,
-      title: "Code",
+      title: 'Code',
       action: () => editor.chain().focus().toggleCode().run(),
-      isActive: () => editor.isActive("code"),
+      isActive: () => editor.isActive('code'),
     },
     {
       icon: Highlighter,
-      title: "Highlight",
+      title: 'Highlight',
       action: () => editor.chain().focus().toggleHighlight().run(),
-      isActive: () => editor.isActive("highlight"),
+      isActive: () => editor.isActive('highlight'),
     },
     {
-      type: "divider",
+      type: 'divider',
     },
     // {
     //   icon: 'h-1',
@@ -73,15 +72,15 @@ export default function MenuBar({ editor }: { editor: Editor }) {
     // },
     {
       icon: List,
-      title: "Bullet List",
+      title: 'Bullet List',
       action: () => editor.chain().focus().toggleBulletList().run(),
-      isActive: () => editor.isActive("bulletList"),
+      isActive: () => editor.isActive('bulletList'),
     },
     {
       icon: ListOrdered,
-      title: "Ordered List",
+      title: 'Ordered List',
       action: () => editor.chain().focus().toggleOrderedList().run(),
-      isActive: () => editor.isActive("orderedList"),
+      isActive: () => editor.isActive('orderedList'),
     },
     // {
     //   icon: 'list-check-2',
@@ -100,9 +99,9 @@ export default function MenuBar({ editor }: { editor: Editor }) {
     },
     {
       icon: Quote,
-      title: "Blockquote",
+      title: 'Blockquote',
       action: () => editor.chain().focus().toggleBlockquote().run(),
-      isActive: () => editor.isActive("blockquote"),
+      isActive: () => editor.isActive('blockquote'),
     },
     // {
     //   icon: 'separator',
@@ -119,29 +118,29 @@ export default function MenuBar({ editor }: { editor: Editor }) {
     // },
     {
       icon: Eraser,
-      title: "Clear Format",
+      title: 'Clear Format',
       action: () => editor.chain().focus().clearNodes().unsetAllMarks().run(),
     },
     {
-      type: "divider",
+      type: 'divider',
     },
     {
       icon: Undo2,
-      title: "Undo",
+      title: 'Undo',
       action: () => editor.chain().focus().undo().run(),
     },
     {
       icon: Redo2,
-      title: "Redo",
+      title: 'Redo',
       action: () => editor.chain().focus().redo().run(),
     },
   ];
 
   return (
     <div className="editor__header ">
-      {items.map((item, index) => (
-        <Fragment key={index}>
-          {item.type === "divider" ? (
+      {items.map((item) => (
+        <Fragment key={item.title}>
+          {item.type === 'divider' ? (
             <div className="divider" />
           ) : (
             <MenuItem {...item} />

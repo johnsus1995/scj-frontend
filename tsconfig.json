@@ -33,5 +33,4 @@
   "include": ["src", "tsconfig.json"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "noImplicitAny": false
-
 }

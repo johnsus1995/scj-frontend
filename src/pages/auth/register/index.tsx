@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
-
 const registerSchema = Yup.object().shape({
   firstName: Yup.string()
     .required('First name is required!')
@@ -132,7 +131,7 @@ const Register = () => {
             />
           )}
         />
-        
+
         {/* <Controller
           control={control}
           name="password"

@@ -13,7 +13,7 @@ import { convert } from 'html-to-text';
 import MenuBar from '@/components/tiptap/menubar';
 
 export default function Editor() {
-  const [editorContent, setEditorContent] = useState<any>('');
+  const [, setEditorContent] = useState<any>('');
 
   const editor = useEditor({
     extensions: [

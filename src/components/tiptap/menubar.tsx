@@ -51,6 +51,7 @@ export default function MenuBar({ editor }: { editor: Editor }) {
     },
     {
       type: 'divider',
+      title: 'divider_1',
     },
     // {
     //   icon: 'h-1',
@@ -96,6 +97,7 @@ export default function MenuBar({ editor }: { editor: Editor }) {
     // },
     {
       type: 'divider',
+      title: 'divider_2',
     },
     {
       icon: Quote,
@@ -110,6 +112,7 @@ export default function MenuBar({ editor }: { editor: Editor }) {
     // },
     {
       type: 'divider',
+      title: 'divider_3',
     },
     // {
     //   icon: 'text-wrap',
@@ -123,6 +126,7 @@ export default function MenuBar({ editor }: { editor: Editor }) {
     },
     {
       type: 'divider',
+      title: 'divider_4',
     },
     {
       icon: Undo2,

@@ -2,13 +2,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { Button } from '../ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import examApi from '@/features/todo/services/exam.api';
-// import { useNavigate } from 'react-router-dom';
 
 const schema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -16,7 +16,7 @@ const schema = Yup.object().shape({
 });
 
 const CreateExamForm = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -36,7 +36,7 @@ const CreateExamForm = () => {
     onSuccess: (res: any) => {
       toast.success(res?.message);
       reset();
-      // navigate('')
+      navigate(`/exams/${res.data.id}`);
     },
   });
 

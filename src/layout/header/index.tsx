@@ -3,9 +3,29 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import { navList } from '@/data/constant/navs';
 import { useActiveMenu } from '@/hooks';
 import { cn } from '@/lib/utils';
+import CreateExam from '@/pages/create-exam';
+import Editor from '@/pages/editor';
+import TakeExam from '@/pages/takeExam';
+
+const headerNavs = [
+  {
+    key: '/editor ',
+    label: 'editor',
+    element: <Editor />,
+  },
+  {
+    key: '/take-exam',
+    label: 'take-exam',
+    element: <TakeExam />,
+  },
+  {
+    key: '/create-exam',
+    label: 'create-exam',
+    element: <CreateExam />,
+  },
+];
 
 const HeaderComponent = () => {
   const { checkActive } = useActiveMenu();
@@ -24,7 +44,7 @@ const HeaderComponent = () => {
       <div className="max-w-[1128px] w-full flex justify-between items-center m-auto px-2 md:px-4 relative">
         <h1 className="text-busanJames font-extrabold text-2xl">BUSAN JAMES</h1>
         <div className="hidden md:flex gap-3">
-          {navList.map((item) => (
+          {headerNavs.map((item) => (
             <Link key={item.key} to={item.key}>
               <span
                 className={`uppercase font-bold text-sm px-4 py-2 ${

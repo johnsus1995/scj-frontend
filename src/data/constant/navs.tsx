@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 import {
   HOME_PATH,
   USER_PATH,
-  REGISTER_PATH,
   EDITOR_PATH,
   EXAMS_PATH,
   TAKE_EXAM_PATH,
   CREATE_EXAM_PATH,
 } from './path';
 import { TypeNavs, TypeRoutes } from './type-navs';
-import { Home, Users, Register, Editor, AllExams } from '@/pages';
+import { Home, Users, Editor, AllExams } from '@/pages';
 import CreateExam from '@/pages/create-exam';
 import TakeExam from '@/pages/takeExam';
 import { capitalizeFirstLetter } from '@/utils';
@@ -31,11 +30,6 @@ const navs: TypeNavs[] = [
     key: EXAMS_PATH,
     label: 'exams',
     element: <AllExams />,
-  },
-  {
-    key: REGISTER_PATH,
-    label: 'register',
-    element: <Register />,
   },
   {
     key: EDITOR_PATH,
@@ -105,7 +99,9 @@ const getShowNavigation = (
 };
 
 const menuList: TypeNavs[] = [];
+
 const routeList: TypeRoutes[] = [];
+
 const navList: TypeNavs[] = navs.map((nav) => ({
   key: nav.key,
   label: nav.label,

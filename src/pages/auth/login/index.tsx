@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 // import PasswordInput from '../utils/PasswordInput';
@@ -13,11 +14,12 @@ const schema = Yup.object().shape({
       message: 'Please enter a valid email address.',
       excludeEmptyString: false,
     }),
-  scjId: Yup.string().required('SCJ Id is required!'),
   password: Yup.string().required('Password is required!'),
 });
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     control,
     handleSubmit,
@@ -31,14 +33,14 @@ const Login = () => {
   });
 
   const onSubmit = (_data: unknown) => {
-    //
+    navigate('/');
   };
 
   return (
-    <div className="w-full h-full px-4 max-w-[400px] border-l border-gray-300">
+    <div className="md:pl-20 w-full h-full px-4 max-w-[400px] border-l border-gray-300">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-4 w-full mt-40"
+        className="flex flex-col gap-4 w-full mt-20"
       >
         <h2 className="font-bold text-xl">Sign In</h2>
         <Controller
@@ -66,6 +68,15 @@ const Login = () => {
           )}
         />
         <Button className="bg-busanJames rounded-none w-1/3">Sign-in</Button>
+        <p className="text-sm">
+          New user create a new account{' '}
+          <Link
+            to={'/auth/register'}
+            className="text-busanJames underline font-semibold"
+          >
+            here.
+          </Link>
+        </p>
       </form>
     </div>
   );

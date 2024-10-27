@@ -12,7 +12,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, label, error, ...props }, ref) => {
     return (
       <div className="flex flex-col gap-1">
-        <p className="text-sm">{label}</p>
+        <label htmlFor="" className="text-sm font-semibold">
+          {label}
+        </label>
         <input
           type={type}
           className={cn(
@@ -22,7 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        <p className="text-red-500 text-xs">{error}</p>
+        <p className="text-red-600 text-xs">{error}</p>
       </div>
     );
   },

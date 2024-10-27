@@ -70,7 +70,7 @@ const CreateExamForm = () => {
       <Button
         type="submit"
         disabled={isLoading}
-        className="bg-busanJames w-1/12 p-2 rounded-lg text-white cursor-pointer"
+        className="bg-busanJames w-fit p-2 rounded-lg text-white"
         isLoading={isLoading}
       >
         Submit

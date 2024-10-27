@@ -1,34 +1,22 @@
 import { useEffect, useState } from 'react';
 
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { useActiveMenu } from '@/hooks';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import CreateExam from '@/pages/create-exam';
-import Editor from '@/pages/editor';
-import TakeExam from '@/pages/takeExam';
+import AllExams from '@/pages/allExams';
 
 const headerNavs = [
   {
-    key: '/editor ',
-    label: 'editor',
-    element: <Editor />,
-  },
-  {
-    key: '/take-exam',
-    label: 'take-exam',
-    element: <TakeExam />,
-  },
-  {
-    key: '/create-exam',
-    label: 'create-exam',
-    element: <CreateExam />,
+    key: '/exams',
+    label: 'Exams',
+    element: <AllExams />,
   },
 ];
 
 const HeaderComponent = () => {
-  const { checkActive } = useActiveMenu();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -39,24 +27,28 @@ const HeaderComponent = () => {
     document.body.style.overflowY = 'auto';
   }, [isOpen]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('scj-tok');
+    navigate('/auth/login');
+  };
+
   return (
     <header className="bg-secondary sticky top-0 w-full inset-x-0 z-30 h-16 shadow-xl flex items-center ">
       <div className="max-w-[1128px] w-full flex justify-between items-center m-auto px-2 md:px-4 relative">
         <h1 className="text-busanJames font-extrabold text-2xl">BUSAN JAMES</h1>
-        <div className="hidden md:flex gap-3">
+        <div className="hidden md:flex gap-3 items-center">
           {headerNavs.map((item) => (
-            <Link key={item.key} to={item.key}>
-              <span
-                className={`uppercase font-bold text-sm px-4 py-2 ${
-                  checkActive(item.key)
-                    ? 'bg-slate-400 dark:bg-slate-700'
-                    : 'bg-slate-300 dark:bg-slate-500'
-                }  hover:bg-slate-400  dark:hover:bg-slate-700 rounded-md transition-all duration-150`}
-              >
-                {item.label}
-              </span>
+            <Link
+              key={item.key}
+              to={item.key}
+              className="text-sm hover:bg-busanJames p-1 hover:text-white rounded-md"
+            >
+              {item.label}
             </Link>
           ))}
+          <Button className="p-1 h-fit" onClick={handleLogout}>
+            Logout
+          </Button>
         </div>
 
         <div

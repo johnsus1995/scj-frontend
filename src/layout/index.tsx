@@ -5,12 +5,13 @@ import { Outlet } from 'react-router-dom';
 
 import fallbackRender from './error-boundary/fallbackRender';
 import HeaderComponent from './header';
+import LeftSidebar from './leftSidebar';
 
 const LayoutComponent = () => {
   return (
-    <div className="w-full h-full">
+    <div className="w-full overflow-y-auto">
       <HeaderComponent />
-      <div className="p-2 md:px-4 md:pt-6 flex flex-col m-auto max-w-[1128px] h-full">
+      <div className="md:px-4 flex flex-col m-auto max-w-[1128px] h-full">
         <ErrorBoundary fallbackRender={fallbackRender}>
           <Suspense
             fallback={
@@ -19,7 +20,10 @@ const LayoutComponent = () => {
               </div>
             }
           >
-            <Outlet />
+            <div className="flex h-[calc(100vh-64px)]">
+              <LeftSidebar />
+              <Outlet />
+            </div>
           </Suspense>
         </ErrorBoundary>
       </div>

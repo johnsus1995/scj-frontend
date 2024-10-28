@@ -9,7 +9,7 @@ const LeftSidebar = () => {
       <ul className="list-none pt-4  font-semibold text-busanJames flex flex-col gap-4 w-full">
         <li className="w-full">
           <Link
-            to="#"
+            to="/exams/create"
             className="hover:bg-busanJames hover:text-white p-1 block rounded w-full"
           >
             Create Exam

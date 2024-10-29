@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // show a modal with instructions first
 
 import { useState } from 'react';
@@ -13,7 +14,7 @@ import { Link } from 'react-router-dom';
 
 import Question from '@/components/exam/QuestionEditor';
 import { Button } from '@/components/ui/button';
-import examApi from '@/features/todo/services/exam.api';
+// import examApi from '@/features/todo/services/exam.api';
 import { useExam } from '@/store/createExamStore';
 
 const TakeExam = () => {
@@ -87,9 +88,9 @@ const TakeExam = () => {
       ]),
     };
 
-    const requests = [
-      examApi.addQuestion(qReqData),
-      examApi.addCorrectAnswer(aReqData),
+    const requests: any = [
+      // examApi.addQuestion(qReqData),
+      // examApi.addCorrectAnswer(aReqData),
     ];
 
     await Promise.all(requests)

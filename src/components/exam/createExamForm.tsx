@@ -1,14 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { Button } from '../ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import examApi from '@/features/todo/services/exam.api';
+import { useAddExamMutation } from '@/features/exam/hooks/use-exam-query';
 
 const schema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -16,27 +14,19 @@ const schema = Yup.object().shape({
 });
 
 const CreateExamForm = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const { mutate, isLoading } = useAddExamMutation();
 
   const {
     handleSubmit,
     formState: { errors },
-    reset,
+    // reset,
     register,
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
       title: '',
       description: '',
-    },
-  });
-
-  const { isLoading, mutate } = useMutation({
-    mutationFn: async (payload: any) => await examApi.add(payload),
-    onSuccess: (res: any) => {
-      toast.success(res?.message);
-      reset();
-      navigate(`/exams/${res.data.id}`);
     },
   });
 

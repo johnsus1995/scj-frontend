@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { format } from 'date-fns';
 import { Controller, useForm } from 'react-hook-form';
 // import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { Button } from '../ui/button';
@@ -19,8 +22,8 @@ const schema = Yup.object().shape({
 });
 
 const CreateExamForm = () => {
-  // const navigate = useNavigate();
-  const { mutate, isLoading } = useAddExamMutation();
+  const navigate = useNavigate();
+  const { mutate, isLoading, data } = useAddExamMutation();
 
   const {
     handleSubmit,
@@ -47,6 +50,12 @@ const CreateExamForm = () => {
       createdBy: 1,
     });
   };
+
+  useEffect(() => {
+    if (data?.data?.id) {
+      navigate(`/exams/${data?.data?.id}`);
+    }
+  }, [data, data?.id, navigate, isLoading]);
 
   return (
     <form

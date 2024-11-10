@@ -17,7 +17,7 @@ import { Button } from '@/components/ui/button';
 // import examApi from '@/features/todo/services/exam.api';
 import { useExam } from '@/store/createExamStore';
 
-const TakeExam = () => {
+const AddQuestionAnswer = () => {
   const questionNum = useExam((state) => state.currentQuestionNumber);
   const updateQuestionNum = useExam((state) => state.setCurrentQuestionNumber);
 
@@ -194,4 +194,4 @@ const TakeExam = () => {
   );
 };
 
-export default TakeExam;
+export default AddQuestionAnswer;

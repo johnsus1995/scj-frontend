@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { TypeNavs, TypeRoutes } from './type-navs';
 import { Home, Users, AllExams } from '@/pages';
+import AddQuestionAnswer from '@/pages/addQuestionAnswer';
 import CreateExam from '@/pages/create-exam';
 import TakeExam from '@/pages/takeExam';
 import { capitalizeFirstLetter } from '@/utils';
@@ -32,6 +33,10 @@ const navs: TypeNavs[] = [
     key: '/exams/create',
     label: 'create-exam',
     element: <CreateExam />,
+  },
+  {
+    key: '/exams/:id/add-question-answer',
+    element: <AddQuestionAnswer />,
   },
 ];
 

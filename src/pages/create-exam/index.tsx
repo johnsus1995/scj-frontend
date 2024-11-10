@@ -2,7 +2,7 @@ import CreateExamForm from '@/components/exam/createExamForm';
 
 const CreateExam = () => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 md:border-l border-gray-300 p-4">
       <h4 className="font-bold text-xl">Instructions</h4>
       <ul className="text-sm text-gray-500 list-disc ml-8">
         <li>

@@ -2,8 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios, { AxiosError } from 'axios';
 
-import { LOGIN_PATH } from '@/data';
-
 const axiosClient = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   headers: {
@@ -37,8 +35,8 @@ axiosClient.interceptors.response.use(
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     if (error.response?.status === 401) {
       // clear token ...
-      localStorage.removeItem('token');
-      window.location.replace(LOGIN_PATH);
+      localStorage.removeItem('scj-tok');
+      window.location.replace('/auth/login');
     }
 
     return Promise.reject(error.response?.data);

@@ -1,7 +1,7 @@
 import axiosClient from '@/apis/axios-client';
 
 const examApi = {
-  add: (data: any): Promise<any> => axiosClient.post('api/exam/create', data),
+  addExam: (data: any): Promise<any> => axiosClient.post('api/exams/add', data),
   addQuestion: (data: any): Promise<any> =>
     axiosClient.post('api/question', data),
   addCorrectAnswer: (data: any): Promise<any> =>

@@ -12,8 +12,7 @@ import { useRegisterUserMutation } from '@/features/user/use-user-query';
 
 const schema = Yup.object().shape({
   scjId: Yup.string().required('Required!'),
-  firstName: Yup.string().required('Required!'),
-  lastName: Yup.string().required('Required!'),
+  name: Yup.string().required('Required!'),
   email: Yup.string()
     .required('Email is required!')
     .matches(/^((\S+)@(\S+)\.(\S+))$/, {
@@ -41,8 +40,7 @@ const Register = () => {
     resolver: yupResolver(schema),
     defaultValues: {
       scjId: '',
-      firstName: '',
-      lastName: '',
+      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -87,27 +85,14 @@ const Register = () => {
         />
         <Controller
           control={control}
-          name="firstName"
+          name="name"
           render={({ field }) => (
             <Input
               {...field}
-              label="First name"
+              label="Name"
               className="rounded-none border border-gray-400"
               type="text"
-              error={errors.firstName?.message}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="lastName"
-          render={({ field }) => (
-            <Input
-              {...field}
-              label="Last name"
-              className="rounded-none border border-gray-400"
-              type="text"
-              error={errors.lastName?.message}
+              error={errors.name?.message}
             />
           )}
         />

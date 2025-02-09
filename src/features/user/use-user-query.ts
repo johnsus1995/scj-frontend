@@ -10,7 +10,9 @@ export const useRegisterUserMutation = () => {
       void toast.success(res.message);
     },
     onError: (err: any) => {
-      void toast.error(err.errorMessage);
+      err.error.forEach((e: any) => {
+        toast.error(e.message);
+      });
     },
   });
 };

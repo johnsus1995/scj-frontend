@@ -23,7 +23,7 @@ const schema = Yup.object().shape({
 
 const CreateExamForm = () => {
   const navigate = useNavigate();
-  const { mutate, isLoading, data } = useAddExamMutation();
+  const { mutate, isLoading, data, isSuccess } = useAddExamMutation();
 
   const {
     handleSubmit,
@@ -52,10 +52,10 @@ const CreateExamForm = () => {
   };
 
   useEffect(() => {
-    if (data?.data?.id) {
+    if (isSuccess) {
       navigate(`/exams/${data?.data?.id}`);
     }
-  }, [data, data?.id, navigate, isLoading]);
+  }, [data, data?.id, navigate, isLoading, isSuccess]);
 
   return (
     <form
@@ -72,6 +72,19 @@ const CreateExamForm = () => {
             className="rounded-none border border-gray-400"
             type="text"
             error={errors.title?.message}
+          />
+        )}
+      />
+
+      <Controller
+        control={control}
+        name="description"
+        render={({ field }) => (
+          <Textarea
+            {...field}
+            label="Description"
+            className="rounded-none border border-gray-400"
+            error={errors.description?.message}
           />
         )}
       />
@@ -99,23 +112,12 @@ const CreateExamForm = () => {
         render={({ field }) => (
           <Input
             {...field}
-            label="Duration"
+            label="Duration (Hours)"
             className="rounded-none border border-gray-400"
-            type="time"
+            type="number"
+            min={1}
+            defaultValue={1}
             error={errors.duration?.message}
-          />
-        )}
-      />
-
-      <Controller
-        control={control}
-        name="description"
-        render={({ field }) => (
-          <Textarea
-            {...field}
-            label="Description"
-            className="rounded-none border border-gray-400"
-            error={errors.description?.message}
           />
         )}
       />

@@ -5,7 +5,7 @@ import examApi from '../services/exam.api';
 
 export const useAddExamMutation = () => {
   return useMutation({
-    mutationFn: examApi.add,
+    mutationFn: examApi.addExam,
     onSuccess: (res: any) => {
       void toast.success(res.message);
     },

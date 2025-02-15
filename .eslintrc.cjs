@@ -65,9 +65,9 @@ module.exports = {
         patterns: [
           // '@/features/*/*',
           // '@/components/*',
-          '@/hooks/*',
-          '@/utils/*',
-          '@/ts/*/*',
+          // '@/hooks/*',
+          // '@/utils/*',
+          // '@/ts/*/*',
         ],
       },
     ],

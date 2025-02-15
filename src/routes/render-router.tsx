@@ -5,8 +5,6 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import { routeList } from '@/data/constant/navs';
 import LayoutComponent from '@/layout';
 import AuthLayout from '@/layout/authLayout';
-import { Register } from '@/pages';
-import Login from '@/pages/login';
 
 const NotFound = lazy(() => import('@/pages/not-found'));
 
@@ -30,14 +28,14 @@ const routes = [
     path: '/auth',
     element: <AuthLayout />,
     children: [
-      {
-        path: 'login',
-        element: <Login />,
-      },
-      {
-        path: 'register',
-        element: <Register />,
-      },
+      // {
+      //   path: 'login',
+      //   element: <Login />,
+      // },
+      // {
+      //   path: 'register',
+      //   element: <Register />,
+      // },
       {
         path: '*',
         element: <h1>Not found</h1>,

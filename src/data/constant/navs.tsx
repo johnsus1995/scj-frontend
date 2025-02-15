@@ -2,41 +2,14 @@ import { cloneDeep } from 'lodash';
 import { Link } from 'react-router-dom';
 
 import { TypeNavs, TypeRoutes } from './type-navs';
-import { Home, Users, AllExams } from '@/pages';
-import AddQuestionAnswer from '@/pages/addQuestionAnswer';
-import CreateExam from '@/pages/create-exam';
-import TakeExam from '@/pages/takeExam';
-import { capitalizeFirstLetter } from '@/utils';
+import Home from '@/pages/home';
+import { capitalizeFirstLetter } from '@/utils/string';
 
 const navs: TypeNavs[] = [
   {
     key: '/home',
     label: 'home',
     element: <Home />,
-  },
-  {
-    key: '/user',
-    label: 'user',
-    element: <Users />,
-  },
-  {
-    key: '/exams',
-    label: 'Exams',
-    element: <AllExams />,
-  },
-  {
-    key: '/exams/:id',
-    label: 'take-exam',
-    element: <TakeExam />,
-  },
-  {
-    key: '/exams/create',
-    label: 'create-exam',
-    element: <CreateExam />,
-  },
-  {
-    key: '/exams/:id/add-question-answer',
-    element: <AddQuestionAnswer />,
   },
 ];
 

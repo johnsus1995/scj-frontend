@@ -6,63 +6,6 @@ const Users: FC = () => {
       <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
       <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
       <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
-      <p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text</p>
     </div>
   );
 };

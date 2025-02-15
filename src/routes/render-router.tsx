@@ -6,7 +6,7 @@ import { routeList } from '@/data/constant/navs';
 import LayoutComponent from '@/layout';
 import AuthLayout from '@/layout/authLayout';
 import { Register } from '@/pages';
-import Login from '@/pages/auth/login';
+import Login from '@/pages/login';
 
 const NotFound = lazy(() => import('@/pages/not-found'));
 

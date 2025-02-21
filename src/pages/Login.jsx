@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { register } from "@/api/auth";
+import { login } from "@/api/auth";
 import { useToast } from "@/hooks/use-toast";
 
 const schema = Yup.object().shape({
@@ -37,17 +37,22 @@ const Login = () => {
   });
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (d) => register(d),
-    onSuccess: () => {
+    mutationFn: (d) => login(d),
+    onSuccess: (res) => {
       reset();
       toast({
         title: "Success!",
-        description: "New account created, please login now.",
+        description: res?.message,
       });
+      localStorage.setItem("scjAuthToken",res.data.token)
       navigate("/");
     },
-    onError: () => {
-      //
+    onError: (res) => {
+      toast({
+        variant:"destructive",
+        title: "Error!",
+        description: res?.message,
+      });
     },
   });
 

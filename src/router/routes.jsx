@@ -7,6 +7,7 @@ import PrivateRoute from "@/router/PrivateRoute";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import AuthLayout from "@/components/layout/AuthLayout";
+import CreateExam from "@/pages/CreateExam";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "stats", element: <Stats /> },
       { path: "dashboard", element: <Dashboard /> },
+      { path: "exam/create", element: <CreateExam /> },
     ],
   },
   {

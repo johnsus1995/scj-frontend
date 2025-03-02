@@ -1,15 +1,15 @@
 import { RouterProvider } from "react-router";
 import router from "./router/routes";
 import QueryProvider from "./providers/QueryProvider";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
-      <Toaster />
       <QueryProvider>
         <RouterProvider router={router} />
       </QueryProvider>
+      <Toaster />
     </>
   );
 }

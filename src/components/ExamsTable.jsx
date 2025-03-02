@@ -4,6 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { Link } from "react-router";
 
 // {
 //     id: 1,
@@ -57,16 +58,23 @@ const columns = [
   }),
   columnHelper.accessor("score", {
     header: "Score",
-    cell: (info) => (info.getValue() ||"--"),
+    cell: (info) => info.getValue() || "--",
   }),
   columnHelper.accessor("action", {
     header: "Action",
-    cell: () => (
-      <div className="flex gap-2">
-        <span>Delete</span>
-        <span>View</span>
-      </div>
-    ),
+    cell: (info) => {
+      return (
+        <div className="flex gap-2">
+          <Link
+            to={`exams/${info?.row?.original?.id}/attempt?examTitle=${info?.row?.original?.title}`}
+            className="text-blue-500 font-semibold"
+          >
+            View
+          </Link>
+          <span className="text-red-500 font-semibold">Delete</span>
+        </div>
+      );
+    },
   }),
 ];
 

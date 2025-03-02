@@ -7,7 +7,8 @@ import { format } from "date-fns";
 import { Button } from "./ui/button";
 import { useMutation } from "@tanstack/react-query";
 import { addNewExam } from "@/api/exam";
-import { useToast } from "@/hooks/use-toast";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const schema = Yup.object().shape({
   title: Yup.string().required("Title is required!"),
@@ -19,7 +20,7 @@ const schema = Yup.object().shape({
 });
 
 const CreateExamForm = () => {
-  const { toast } = useToast();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
@@ -40,18 +41,11 @@ const CreateExamForm = () => {
     mutationFn: addNewExam,
     onSuccess: (res) => {
       reset();
-      toast({
-        title: "Success!",
-        description: res?.message,
-      });
-    //   navigate("/");
+      toast.success(res?.message);
+      navigate(`/exams/${res?.data?.id}/add-question-and-answer?examTitle=${res?.data?.title}&&questionNumber=1&&answerNumber=1`);
     },
-    onError: (res) => {
-      toast({
-        variant: "destructive",
-        title: "Error!",
-        description: res?.message,
-      });
+    onError: (err) => {
+      toast.error(err?.message);
     },
   });
 
@@ -123,7 +117,6 @@ const CreateExamForm = () => {
               className="rounded-none border border-gray-400"
               type="number"
               min={1}
-              defaultValue={1}
               error={errors.duration?.message}
             />
           )}

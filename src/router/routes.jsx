@@ -1,29 +1,37 @@
 import { createBrowserRouter } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Dashboard from "../pages/Dashboard";
 import Stats from "../pages/Stats";
 import PrivateRoute from "@/router/PrivateRoute";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
-import AuthLayout from "@/components/layout/AuthLayout";
-import CreateExam from "@/pages/CreateExam";
+
+const Login = lazy(() => import("@/pages/Login"));
+const Register = lazy(() => import("@/pages/Register"));
+const AuthLayout = lazy(() => import("@/components/layout/AuthLayout"));
+const CreateExam = lazy(() => import("@/pages/CreateExam"));
+const AddQuestionAndAnswer = lazy(() => import("@/pages/AddQuestionAndAnswer"));
+const AttemptExam = lazy(() => import("@/pages/AttemptExam"));
 
 const router = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <AuthLayout>
-        <Login />
-      </AuthLayout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <AuthLayout>
+          <Login />
+        </AuthLayout>
+      </Suspense>
     ),
   },
   {
     path: "/register",
     element: (
-      <AuthLayout>
-        <Register />
-      </AuthLayout>
+      <Suspense fallback={<div>Loading...</div>}>
+        <AuthLayout>
+          <Register />
+        </AuthLayout>
+      </Suspense>
     ),
   },
   {
@@ -33,7 +41,30 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "stats", element: <Stats /> },
       { path: "dashboard", element: <Dashboard /> },
-      { path: "exam/create", element: <CreateExam /> },
+      {
+        path: "exams/add-exam",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <CreateExam />
+          </Suspense>
+        ),
+      },
+      {
+        path: "exams/:id/add-question-and-answer",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AddQuestionAndAnswer />
+          </Suspense>
+        ),
+      },
+      {
+        path: "exams/:id/attempt",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AttemptExam />
+          </Suspense>
+        ),
+      },
     ],
   },
   {

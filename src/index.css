@@ -119,6 +119,16 @@
     margin-top: 0.75em;
   }
 
+  p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+  
+  
+
   ul,
   ol {
     padding: 0 2rem;
@@ -208,13 +218,13 @@
 
 .editor {
   background-color: #fff;
-  border: 3px solid #0d0d0d;
-  border-radius: 0.75rem;
+  border: 1px solid #0d0d0d;
+  /* border-radius: 0.75rem; */
   color: #0d0d0d;
   display: flex;
   flex-direction: column;
-  max-height: 26rem;
-  padding: 0 0px;
+  /* max-height: 26rem; */
+  padding: 1rem;
 
   &__header {
     align-items: center;

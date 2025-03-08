@@ -3,7 +3,7 @@ import ExamTable from "@/components/ExamsTable";
 import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading, refetch } = useQuery({
     queryKey: "get-exams",
     queryFn: getAllExams,
   });
@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div className="p-4">
       <h1 className="text-xl font-bold mb-4">Exams</h1>
-      <ExamTable exams={data} />
+      <ExamTable exams={data} refetchExams={refetch} />
     </div>
   );
 };

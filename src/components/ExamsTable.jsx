@@ -1,9 +1,12 @@
+import { deleteExam } from "@/api/exam";
+import { useMutation } from "@tanstack/react-query";
 import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import toast from "react-hot-toast";
 import { Link } from "react-router";
 
 // {
@@ -19,67 +22,84 @@ import { Link } from "react-router";
 
 const columnHelper = createColumnHelper();
 
-const columns = [
-  columnHelper.accessor("id", {
-    header: "ID",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("title", {
-    header: "Title",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("duration", {
-    header: "Duration",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("deadline", {
-    header: "Deadline",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("published", {
-    header: "Published",
-    cell: (info) => (info.getValue() ? "Yes" : "No"),
-  }),
-  columnHelper.accessor("createdAt", {
-    header: "Created At",
-    cell: (info) => new Date(info.getValue()).toLocaleDateString(),
-  }),
-  columnHelper.accessor("author.name", {
-    header: "Created By",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("status", {
-    header: "Status",
-    cell: (info) => info.getValue() || "Pending",
-  }),
-  columnHelper.accessor("published", {
-    header: "Published",
-    cell: (info) => (info.getValue() ? "Yes" : "No"),
-  }),
-  columnHelper.accessor("score", {
-    header: "Score",
-    cell: (info) => info.getValue() || "--",
-  }),
-  columnHelper.accessor("action", {
-    header: "Action",
-    cell: (info) => {
-      return (
-        <div className="flex gap-2">
-          <Link
-            to={`exams/${info?.row?.original?.id}/attempt?examTitle=${info?.row?.original?.title}`}
-            className="text-blue-500 font-semibold"
-          >
-            View
-          </Link>
-          <span className="text-red-500 font-semibold">Delete</span>
-        </div>
-      );
-    },
-  }),
-];
-
 function ExamTable(props) {
-  const { exams } = props;
+  const { exams, refetchExams } = props;
+
+  const { mutate } = useMutation({
+    mutationFn: deleteExam,
+    onSuccess: (res) => {
+      toast.success(res?.message);
+      refetchExams();
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
+  const columns = [
+    columnHelper.accessor("id", {
+      header: "ID",
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("title", {
+      header: "Title",
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("duration", {
+      header: "Duration",
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("deadline", {
+      header: "Deadline",
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("published", {
+      header: "Published",
+      cell: (info) => (info.getValue() ? "Yes" : "No"),
+    }),
+    columnHelper.accessor("createdAt", {
+      header: "Created At",
+      cell: (info) => new Date(info.getValue()).toLocaleDateString(),
+    }),
+    columnHelper.accessor("author.name", {
+      header: "Created By",
+      cell: (info) => info.getValue(),
+    }),
+    columnHelper.accessor("status", {
+      header: "Status",
+      cell: (info) => info.getValue() || "Pending",
+    }),
+    columnHelper.accessor("published", {
+      header: "Published",
+      cell: (info) => (info.getValue() ? "Yes" : "No"),
+    }),
+    columnHelper.accessor("score", {
+      header: "Score",
+      cell: (info) => info.getValue() || "--",
+    }),
+    columnHelper.accessor("action", {
+      header: "Action",
+      cell: (info) => {
+        return (
+          <div className="flex gap-2">
+            <Link
+              to={`exams/${info?.row?.original?.id}`}
+              // to={`exams/${info?.row?.original?.id}/attempt?examTitle=${info?.row?.original?.title}`}
+              className="text-blue-500 font-semibold"
+            >
+              View
+            </Link>
+            <button
+              className="text-red-500 font-semibold"
+              onClick={() => mutate({ id: info?.row?.original?.id })}
+            >
+              Delete
+            </button>
+          </div>
+        );
+      },
+    }),
+  ];
 
   const table = useReactTable({
     data: exams,

@@ -307,7 +307,7 @@
 
 .editor .editor_content .tiptap,
 .ProseMirror {
-  min-height: 200px;
+  /* min-height: 200px; */
   outline: none;
 }
 

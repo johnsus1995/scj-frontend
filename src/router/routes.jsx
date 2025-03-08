@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import Dashboard from "../pages/Dashboard";
 import Stats from "../pages/Stats";
 import PrivateRoute from "@/router/PrivateRoute";
+import ListQuestionsAndAnswers from "@/pages/ListQuestionsAndAnswers";
 
 const Login = lazy(() => import("@/pages/Login"));
 const Register = lazy(() => import("@/pages/Register"));
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<div>Loading...</div>}>
             <AddQuestionAndAnswer />
+          </Suspense>
+        ),
+      },
+      {
+        path: "exams/:id",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ListQuestionsAndAnswers />
           </Suspense>
         ),
       },

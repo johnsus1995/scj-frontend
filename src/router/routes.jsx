@@ -2,8 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
-import Dashboard from "../pages/Dashboard";
-import Stats from "../pages/Stats";
 import PrivateRoute from "@/router/PrivateRoute";
 import ListQuestionsAndAnswers from "@/pages/ListQuestionsAndAnswers";
 
@@ -40,8 +38,6 @@ const router = createBrowserRouter([
     element: <PrivateRoute />,
     children: [
       { path: "", element: <Home /> },
-      { path: "stats", element: <Stats /> },
-      { path: "dashboard", element: <Dashboard /> },
       {
         path: "exams/add-exam",
         element: (

@@ -1,8 +1,10 @@
-import { getAllQuestionsOfExam } from "@/api/exam";
-import { useQuery } from "@tanstack/react-query";
+import { getAllQuestionsOfExam, startAttemptExam } from "@/api/exam";
+import { Button } from "@/components/ui/button";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useParams } from "react-router";
+import toast from "react-hot-toast";
+import { Link, useNavigate, useParams } from "react-router";
 
 const ReadOnlyEditor = ({ content }) => {
   const editor = useEditor({
@@ -33,8 +35,8 @@ const QuestionsAnswerList = ({ data, answers }) => {
             <li key={question.id} className="pb-0">
               <ReadOnlyEditor content={question.text} />
               {answer && (
-                <div className="mt-2 pl-4 border-l-4 border-gray-300 flex gap-2">
-                  <span>1A .</span>
+                <div className="mt-2 pl-4 border-l-4 border-gray-300 flex items-baseline gap-2">
+                  <p className="font-semibold text-green-500">Ans.</p>
                   <ReadOnlyEditor content={answer.text} />
                 </div>
               )}
@@ -78,22 +80,50 @@ const answerResponse = {
 
 const ListQuestionsAndAnswers = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data: questionData, isPending } = useQuery({
-    queryKey: "get-questions",
+    queryKey: ["get-questions"],
     queryFn: () => getAllQuestionsOfExam({ id }),
   });
 
-  console.log(questionData)
+  const { mutate } = useMutation({
+    mutationFn: startAttemptExam,
+    onSuccess: (res) => {
+      toast.success(res.message);
+      navigate(`attempt?attemptExamId=${res.data.id}`);
+    },
+    onError: () => {
+      toast.error("error!");
+    },
+  });
 
-  if(isPending) return <div>Loading...</div>
+  const onAttemptExam = () => {
+    mutate({ id });
+  };
+
+  if (isPending) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="flex flex-col  items-center gap-4 ">
       <QuestionsAnswerList
         data={questionData?.data?.questions}
         answers={answerResponse.data.questions}
       />
+      <div className="flex gap-2 ml-2 md:ml-4">
+        <Link
+          to={"/"}
+          className="bg-busanBlue px-4 py-2 w-fit rounded-none text-white"
+        >
+          Go Back
+        </Link>
+        <Button
+          onClick={onAttemptExam}
+          className="bg-busanBlue px-4 py-2 w-fit rounded-none"
+        >
+          Attempt Exam
+        </Button>
+      </div>
     </div>
   );
 };

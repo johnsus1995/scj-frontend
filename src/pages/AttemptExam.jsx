@@ -6,17 +6,11 @@ import TaskList from "@tiptap/extension-task-list";
 import { EditorContent, useEditor } from "@tiptap/react";
 import Placeholder from "@tiptap/extension-placeholder";
 import StarterKit from "@tiptap/starter-kit";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useRouteError,
-  useSearchParams,
-} from "react-router";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router";
 import { attemptAnswer, getNextQuestion } from "@/api/exam";
 
 const AttemptExam = () => {
@@ -24,9 +18,10 @@ const AttemptExam = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { id } = useParams();
-  const attemptExamId = searchParams.get("attemptExamId");
+  const attempt_exam_id = searchParams.get("attempt_exam_id");
   const questionId = searchParams.get("questionId");
-  // debugger
+  const exam_title = searchParams.get("exam_title");
+
   const [questionEditorContent, setQuestionEditorContent] = useState("");
   const [answerEditorContent, setAnswerEditorContent] = useState("");
 
@@ -68,30 +63,31 @@ const AttemptExam = () => {
   const { mutate: getQuestion } = useMutation({
     mutationFn: getNextQuestion,
     onSuccess: (res) => {
-      // debugger
+      if (res.lastQuestionDone) return navigate(`/exams/${id}`);
+
       setSearchParams({
         ...searchParams,
-        attemptExamId,
+        exam_title,
+        attempt_exam_id,
         questionId: res.question.id,
       });
       questionEditor.commands.setContent(res.question.text);
     },
     onError: (err) => {
-      // debugger
-      toast.error("unable to fetch question!");
+      toast.error(err?.message);
     },
   });
 
   const { mutate, isPending } = useMutation({
     mutationFn: attemptAnswer,
     onSuccess: (res) => {
-      toast.success("done!");
-      // navigate(
-      //   `/exams/${id}/add-question-and-answer?examTitle=test123&&questionNumber=${
-      //     Number() + 1
-      //   }&&answerNumber=${Number() + 1}`
-      // );
-      // answerEditor?.commands.clearContent();
+      toast.success(res.message);
+      getQuestion({
+        examId: id,
+        attemptedExamId: attempt_exam_id,
+      });
+
+      answerEditor?.commands.clearContent();
     },
     onError: () => {
       toast.error("error!");
@@ -99,8 +95,11 @@ const AttemptExam = () => {
   });
 
   const onSubmit = () => {
+
+    if(answerEditor.isEmpty) return toast.error("Answer is required!");
+    
     mutate({
-      attemptExamId,
+      attemptExamId: attempt_exam_id,
       questionId,
       answerText: answerEditor.getHTML(),
     });
@@ -109,28 +108,29 @@ const AttemptExam = () => {
   useEffect(() => {
     getQuestion({
       examId: id,
-      attemptedExamId: attemptExamId,
+      attemptedExamId: attempt_exam_id,
     });
   }, []);
 
   return (
     <div>
-      <h1 className="ml-2 md:ml-4 font-bold text:lg md:text-2xl my-2 ">
-        Exam Name: <span className="text-busanBlue">{"examTitle"}</span>
+      <h1 className="ml-2 md:ml-4 font-thin text:lg md:text-2xl my-2 ">
+        Exam Name:{" "}
+        <span className="text-busanBlue font-semibold">{exam_title}</span>
       </h1>
 
       {/* question editor */}
       <div>
-        <h1 className="ml-2 md:ml-4 font-bold text-base md:text-lg">
+        <h1 className="ml-2 md:ml-4 font-thin text-base md:text-lg">
           Question
         </h1>
-        <div className="editor mx-2 md:mx-4 mt-2">
+        <div className="editor not-editable mx-2 md:mx-4 mt-2">
           <EditorContent className="editor__content" editor={questionEditor} />
         </div>
       </div>
       {/* answer editor */}
-      <div>
-        <h1 className="ml-2 md:ml-4 font-bold text-base md:text-lg">Answer</h1>
+      <div className="mt-10">
+        <h1 className="ml-2 md:ml-4 font-thin text-base md:text-lg">Answer</h1>
         <div className="editor mx-2 md:mx-4 mt-2 min-h-[18rem]">
           {answerEditor && <MenuBar editor={answerEditor} />}
           <hr className="pb-2" />

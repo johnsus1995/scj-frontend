@@ -23,3 +23,5 @@ export const getAllAnswersOfExam = (data) =>
   axiosClient.get(`/api/questions?examId=${data.id}`);
 export const attemptAnswer = (data) =>
   axiosClient.post("/api/answers/attempt", data);
+export const getAllAttemptedAnswersOfExam = (data) =>
+  axiosClient.get(`/api/answers/attempted-answers?attemptExamId=${data.id}`);

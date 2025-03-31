@@ -83,7 +83,7 @@ function ExamTable(props) {
         return (
           <div className="flex gap-2">
             <Link
-              to={`exams/${info?.row?.original?.id}`}
+              to={`exams/${info?.row?.original?.id}?exam_title=${info?.row?.original?.title}`}
               // to={`exams/${info?.row?.original?.id}/attempt?examTitle=${info?.row?.original?.title}`}
               className="text-blue-500 font-semibold"
             >
